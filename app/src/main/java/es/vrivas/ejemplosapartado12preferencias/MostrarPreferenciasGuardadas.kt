@@ -34,7 +34,7 @@ class MostrarPreferenciasGuardadas : AppCompatActivity() {
         guardar_preferencias_activity()
         super.onPause()
     }
-    // Métodos para preferencias_activity
+    // Métodos para preferencias_activity en MostrarPreferenciasGuardadas
     fun recuperar_preferencias_activity() {
         val preferencias = getPreferences(MODE_PRIVATE)
         val palabras_recuperadas=preferencias.getStringSet(MainActivity.TOKEN_PALABRAS, setOf<String?>()) // Añadir o modificar
