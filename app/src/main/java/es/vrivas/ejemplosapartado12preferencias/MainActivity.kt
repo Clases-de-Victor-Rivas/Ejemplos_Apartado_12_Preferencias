@@ -3,6 +3,7 @@ package es.vrivas.ejemplosapartado12preferencias
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,11 +12,16 @@ import kotlinx.android.synthetic.main.activity_mostrar_preferencias_guardadas.*
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         bt_iniciar_sesion.setOnClickListener(this)
+
+        // getDefaultSharedPreferences está obsoleto
+        PREFERENCES_FILENAME=getPackageName() + "_preferences"
     }
 
     override fun onPostResume() {
@@ -23,6 +29,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         recuperar_preferencias()
     }
     fun recuperar_preferencias() {
+        Log.i( "VICTOR", PREFERENCES_FILENAME)
         val preferencias = getSharedPreferences(PREFERENCES_FILENAME, MODE_PRIVATE)
         var login: String?=""
         var password: String?=""
@@ -48,7 +55,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             editorPreferencias.putString(TOKEN_LOGIN, te_login.text.toString()) // Añadir o modificar
             editorPreferencias.putString(TOKEN_PASSWORD, te_password.text.toString()) // Añadir o modificar
         }
-        editorPreferencias.commit()
+        editorPreferencias.apply()
     }
     override fun onClick(v: View?) {
         guardar_preferencias()
@@ -69,10 +76,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         recuperar_preferencias()
     }
 
-    companion object MAIN_ACTIVITY {
+    companion object {
         const val TOKEN_LOGIN = "token login"
         const val TOKEN_RECORDAR = "token recordar"
         const val TOKEN_PASSWORD = "token password"
-        const val PREFERENCES_FILENAME = "nombre_fichero"
+        var PREFERENCES_FILENAME = ""
     }
 }
