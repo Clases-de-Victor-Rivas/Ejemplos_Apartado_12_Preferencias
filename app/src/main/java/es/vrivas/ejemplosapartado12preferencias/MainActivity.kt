@@ -23,30 +23,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         recuperar_preferencias()
     }
     fun recuperar_preferencias() {
-        val preferencias = getSharedPreferences("nombre_fichero", MODE_PRIVATE)
+        val preferencias = getSharedPreferences(PREFERENCES_FILENAME, MODE_PRIVATE)
         var login: String?=""
         var password: String?=""
-        val recordar = preferencias.getBoolean("token_recordar", false)
+        val recordar = preferencias.getBoolean(TOKEN_RECORDAR, false)
 
         // La preferencia "RECORDAR" siempre se recupera
         sw_recordar.isChecked = recordar
 
         if(sw_recordar.isChecked ) {
-            login=preferencias.getString("token_login", "")
-            password = preferencias.getString("token_password", "")
+            login=preferencias.getString(TOKEN_LOGIN, "")
+            password = preferencias.getString(TOKEN_PASSWORD, "")
         }
         te_login.setText(login!!.toString())
         te_password.setText(password!!.toString())
     }
     fun guardar_preferencias() {
-        val preferencias = getSharedPreferences("nombre_fichero", MODE_PRIVATE)
+        val preferencias = getSharedPreferences(PREFERENCES_FILENAME, MODE_PRIVATE)
         val editorPreferencias = preferencias.edit()
         // La preferencia "RECORDAR" siempre se almacena
-        editorPreferencias.putBoolean("token_recordar", sw_recordar.isChecked)
+        editorPreferencias.putBoolean(TOKEN_RECORDAR, sw_recordar.isChecked)
 
         if( sw_recordar.isChecked ) {
-            editorPreferencias.putString("token_login", te_login.text.toString()) // Añadir o modificar
-            editorPreferencias.putString("token_password", te_password.text.toString()) // Añadir o modificar
+            editorPreferencias.putString(TOKEN_LOGIN, te_login.text.toString()) // Añadir o modificar
+            editorPreferencias.putString(TOKEN_PASSWORD, te_password.text.toString()) // Añadir o modificar
         }
         editorPreferencias.commit()
     }
@@ -67,5 +67,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onBackPressed() {
         super.onBackPressed()
         recuperar_preferencias()
+    }
+
+    companion object MAIN_ACTIVITY {
+        const val TOKEN_LOGIN = "token login"
+        const val TOKEN_RECORDAR = "token recordar"
+        const val TOKEN_PASSWORD = "token password"
+        const val PREFERENCES_FILENAME = "nombre_fichero"
     }
 }

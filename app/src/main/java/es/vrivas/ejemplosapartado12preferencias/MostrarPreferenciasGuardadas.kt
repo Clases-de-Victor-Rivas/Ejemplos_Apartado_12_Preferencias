@@ -10,12 +10,11 @@ class MostrarPreferenciasGuardadas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mostrar_preferencias_guardadas)
-        val preferencias = getSharedPreferences("nombre_fichero", MODE_PRIVATE)
+        val preferencias = getSharedPreferences(MainActivity.PREFERENCES_FILENAME, MODE_PRIVATE)
 
-        Log.i( "VICTOR", "onPostCreate")
-        val login = preferencias.getString("token_login", "VALOR_POR_DEFECTO")
-        val password = preferencias.getString("token_password", "VALOR_POR_DEFECTO")
-        val recordar = preferencias.getBoolean("token_recordar", false)
+        val login = preferencias.getString(MainActivity.TOKEN_LOGIN, "VALOR_POR_DEFECTO")
+        val password = preferencias.getString(MainActivity.TOKEN_PASSWORD, "VALOR_POR_DEFECTO")
+        val recordar = preferencias.getBoolean(MainActivity.TOKEN_RECORDAR, false)
 
         tv_login.text= "Login: "+login!!.toString()
         tv_password.text="Password: "+password!!.toString()
