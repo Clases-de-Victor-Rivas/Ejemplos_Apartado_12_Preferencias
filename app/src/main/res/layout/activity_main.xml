@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +17,8 @@
         android:layout_marginRight="56dp"
         android:layout_marginBottom="12dp"
         android:ems="10"
-        android:hint="login"
+        android:hint="@string/login"
+        android:autofillHints=""
         android:inputType="textPersonName" />
 
     <EditText
@@ -31,18 +31,19 @@
         android:layout_marginRight="55dp"
         android:layout_marginBottom="14dp"
         android:ems="10"
-        android:hint="password"
+        android:autofillHints=""
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/sw_recordar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:layout_marginEnd="54dp"
         android:layout_marginRight="54dp"
         android:layout_marginBottom="10dp"
-        android:text="Recordar" />
+        android:text="@string/recordar" />
 
     <Button
         android:id="@+id/bt_iniciar_sesion"
@@ -53,6 +54,26 @@
         android:layout_marginEnd="57dp"
         android:layout_marginRight="57dp"
         android:layout_marginBottom="0dp"
-        android:text="Iniciar sesión" />
+        android:text="@string/iniciar_sesi_n" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/preferencias_de_actividad"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_palabras_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

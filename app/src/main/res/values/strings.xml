@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Ej. Ap. 12 Preferencias</string>
+    <string name="password">password</string>
+    <string name="login">login</string>
+    <string name="recordar">Recordar</string>
+    <string name="iniciar_sesi_n">Iniciar sesión</string>
+    <string name="preferencias_de_actividad">Preferencias de actividad</string>
+    <string name="login_mostrar">Login: %1$s</string>
+    <string name="password_mostrar">Password: %1$s</string>
+    <string name="recordar_mostrar">Recordar: %1$s</string>
 </resources>
