@@ -74,6 +74,7 @@
     <TextView
         android:id="@+id/tv_palabras_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textSize="24sp" />
 
 </LinearLayout>
